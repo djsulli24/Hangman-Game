@@ -67,6 +67,9 @@ function resetArray(array) {
 
 function createWordArray(randomNumber) {
 
+
+    // Resets the wordArray so that it is empty.
+    resetArray(wordArray);
     // Converts the random number to a string, so that it can be used to retrieve a new
     // musical from the wordObject Object
     var numberString = randomNumber.toString();
@@ -78,10 +81,29 @@ function createWordArray(randomNumber) {
 
 }
 
-function createBlanksArray(newArray) {
+function createBlanksArray() {
 
-    // Take the new word array, and create an array of underscores that has the same length
-    // Fill in any special characters and spaces in the blanks array
+    // Resets the blanksArray so that it is empty
+    
+    resetArray(blanksArray);
+    
+    // Fills in the global variable blanksArray with an underscore in each index where wordArray has
+    // an alphabetical character. For indices of wordArray where there is a special character (comma,
+    // exclamation point, etc.), that character is copied over
+
+    for (i = 0; i < wordArray.length; i++) {
+        // The boolean isAlphabet is true if the value of the character at index i of wordArray (converted to lowercase)
+        // is equal to a character of the alphabetArray.
+        var isAlphabet = alphabetArray.indexOf(wordArray[i].toLowerCase()) != -1;
+        
+        if (isAlphabet) {
+            blanksArray[i] = "_";
+        }
+
+        else {
+            blanksArray[i] = wordArray[i];
+        }
+    }
 
 }
 
@@ -90,10 +112,8 @@ function resetGame() {
 
     var randomNumber = Math.floor(Math.random()*50);
 
-    resetArray(wordArray);
-    resetArray(blanksArray);
     createWordArray(randomNumber);
-    // Create new blanksArray
+    createBlanksArray();
     remainingGuesses = 10;
 }
 
