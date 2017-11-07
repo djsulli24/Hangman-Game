@@ -224,6 +224,8 @@ function gameFunction (enteredLetter) {
     setTimeout(function() { checkGameOver(); }, 2000);
 }
 
+// This function displays all the current game values on the page
+
 function displayValues() {
     document.getElementById("output").innerHTML = blanksArray.join(" ");
     document.getElementById("remaining").innerHTML = "Remaining Guesses: " + remainingGuesses; 
@@ -231,6 +233,8 @@ function displayValues() {
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;  
 }
+
+// This function checks two things: whether remaining guesses has reached 0, or whether the user guessed all the correct letters
 
 function checkGameOver() {
     if (remainingGuesses == 0) {
@@ -244,6 +248,8 @@ function checkGameOver() {
         resetGame();
     }
 }
+
+// This function sets up the game upon pageload
 
 function gameSetup() {
 
