@@ -53,27 +53,32 @@ var wordObject = {
     48:	"Fiddler on the Roof",
     49:	"Ghost"
 }
-
 var wordArray = [];
 var blanksArray = [];
-var remainingGuesses = 10;
+var guessedLetters = [];
+var remainingGuesses = 12;
+var wins = 0;
+var losses = 0;
 var alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // This function clears any array
 
 function resetArray(array) {
+
     while (array.length > 0) {
         array.pop();
     }
+
 }
 
 // This function generates a new wordArray by taking an integer, pulling that integer's value from the 
 // wordObject, which has a list of musicals. Then it splits that string into an array of characters, and sets
 // the global variable wordArray equal to the array
 
-function createWordArray(randomNumber) {
+function createWordArray() {
 
-
+    // Generates a random number between 0 and 49, the number of musical titles in the wordObject
+    var randomNumber = Math.floor(Math.random()*50);
     // Resets the wordArray so that it is empty.
     resetArray(wordArray);
     // Converts the random number to a string, so that it can be used to retrieve a new
@@ -145,11 +150,12 @@ function convertArrayToLowerCase(array) {
 
 function resetGame() {
 
-    var randomNumber = Math.floor(Math.random()*50);
+    resetArray(guessedLetters);
 
-    createWordArray(randomNumber);
+    createWordArray();
     createBlanksArray();
-    remainingGuesses = 10;
+    remainingGuesses = 12;
+    displayValues();
 }
 
 // This function checks whether two arrays are an exact match
@@ -175,15 +181,27 @@ function checkArrayMatch(array1, array2) {
 // the blanksArray, replacing underscores where that letter goes
 
 function gameFunction (enteredLetter) {
-    var userGuess = enteredLetter.toLowerCase();
+
+    var keyCode = enteredLetter.which || enteredLetter.keyCode;
+    var userGuess = String.fromCharCode(keyCode).toLowerCase();
     var startValue = 0;
     var wordArrayLowerCase = convertArrayToLowerCase(wordArray);
-
     // This variable will be TRUE if the user's entered letter is in the lower case wordArrayLowerCase
-    var inTheArray = (wordArrayLowerCase.indexOf(userGuess, startValue) != -1);
+    var inTheArray = (wordArrayLowerCase.indexOf(userGuess, startValue) !== -1);
+    // This variable will be TRUE if the user's entered letter has already been guessed
+    var inGuessedLetters = (guessedLetters.indexOf(userGuess) !== -1);
+    // This variable will be TRUE if the user's pushed key is NOT in the alphabet
+    var notInAlphabet = (alphabetArray.indexOf(userGuess) == -1)
+
+    // This hits a break if the user has entered a letter that they've already guessed
+    if (inGuessedLetters || notInAlphabet) {
+        return;
+    }
     
-    // This replaces any underscores with the correct letter guess
-    
+    // This adds the user's pushed letter to the array of guessedLetters
+    guessedLetters.push(userGuess);
+
+    // This replaces any underscores with the correct letter guess 
     if (inTheArray) {
 
         while (wordArrayLowerCase.indexOf(userGuess, startValue) != -1) {
@@ -191,10 +209,6 @@ function gameFunction (enteredLetter) {
             blanksArray[index] = wordArray[index];
             startValue++;
         }
-
-        // Now that all correct blanks have been filled in with the user's guess,
-        // the number of available guesses is reduced by 1
-        remainingGuesses--;
 
     }
 
@@ -205,13 +219,35 @@ function gameFunction (enteredLetter) {
         remainingGuesses--;
     }
 
+    displayValues();
+
+    setTimeout(function() { checkGameOver(); }, 2000);
 }
 
-While (remainingGuesses > 0) {
-    //When keystroke is hit, call game function
-    
-
-    // If all letters are correctly guessed, display success message, then reset game.
+function displayValues() {
+    document.getElementById("output").innerHTML = blanksArray.join(" ");
+    document.getElementById("remaining").innerHTML = "Remaining Guesses: " + remainingGuesses; 
+    document.getElementById("guesses").innerHTML = "Guessed Letters: " + guessedLetters.join(", ");     
+    document.getElementById("wins").innerHTML = "Wins: " + wins;
+    document.getElementById("losses").innerHTML = "Losses: " + losses;  
 }
 
-resetGame();
+function checkGameOver() {
+    if (remainingGuesses == 0) {
+        losses++;
+        alert("You lost.");
+        resetGame();
+    }
+    else if (checkArrayMatch(wordArray, blanksArray)) {
+        wins++;
+        alert("You won!");
+        resetGame();
+    }
+}
+
+function gameSetup() {
+
+    resetGame();
+    displayValues();
+
+}

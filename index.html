@@ -11,10 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="assets/javascript/game.js"></script>
     </head>
-    <body>
+    <body onload="gameSetup()" onkeypress="gameFunction(event)">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
+        <p id="output"></p>
+        <p id="remaining"></p>
+        <p id="guesses"></p>        
+        <p id="wins"></p>
+        <p id="losses"></p>
+
     </body>
 </html>
