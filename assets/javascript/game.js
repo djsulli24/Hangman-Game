@@ -56,7 +56,7 @@ var wordObject = [
 var wordArray = [];
 var blanksArray = [];
 var guessedLetters = [];
-var remainingGuesses = 12;
+var remainingGuesses = 10;
 var wins = 0;
 var losses = 0;
 var alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -151,7 +151,7 @@ function resetGame() {
 
     createWordArray();
     createBlanksArray();
-    remainingGuesses = 12;
+    remainingGuesses = 10;
     displayValues();
 }
 
@@ -230,6 +230,8 @@ function displayValues() {
     document.getElementById("guesses").innerHTML = arrayToUpperCase(guessedLetters).join(" ");     
     document.getElementById("wins").innerHTML = wins;
     document.getElementById("losses").innerHTML = losses;  
+    document.getElementById("getStarted").innerHTML = ""; 
+    
 }
 
 // This function checks two things: whether remaining guesses has reached 0, or whether the user guessed all the correct letters
@@ -253,6 +255,7 @@ function gameSetup() {
 
     resetGame();
     displayValues();
+    document.getElementById("getStarted").innerHTML = "Press any key to get started!"; 
 
 }
 

@@ -11,7 +11,7 @@ body, html {
 }
 
 .body-container {
-    background-image: url(../images/theatre.jpeg);
+    background-image: url(../images/stagebackdrop.jpeg);
         
     /* Full height */
     height: 100%; 
@@ -56,7 +56,7 @@ h1, h2 {
 /* Styling for the div that holds the guessed letters */
 
 #guesses-container {
-    min-height: 110px;
+    min-height: 112px;
 }
 
 #remaining, #guesses {
@@ -69,4 +69,15 @@ h1, h2 {
 
 #wins, #losses {
     font-size: 40px;
+}
+
+p {
+    margin: 0;
+}
+
+/* Styling for the initial "Press any key to get started" message */
+
+#getStarted {
+    text-align: center;
+    font-size: large;
 }
