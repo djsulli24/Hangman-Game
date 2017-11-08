@@ -1,0 +1,57 @@
+/* This  allows for spaces between blanks in the word being guessed */
+
+#output {
+    white-space: pre-wrap;
+}
+
+/* Background image */
+
+body, html {
+    height: 100%;
+}
+
+.body-container {
+    background-image: url(../images/theatre.jpeg);
+        
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hangman-container {
+    background: rgba(255,255,255,0.9);
+    color: #222222;
+    border-radius: 15px;
+    border: solid 1px #555555;
+    margin-top: 10px;
+}
+
+.hangman-title {
+    text-align: center;
+    padding: 23px;
+}
+
+/* Overwrites bootstrap styling for h1 */
+
+h1 {
+    margin: 0;
+}
+
+/* Styling for the div that holds the word to be guessed */
+
+#output {
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 50px;
+    letter-spacing: 12px;
+}
+
+/* Styling for the div that holds the guessed letters */
+
+#guesses {
+
+}

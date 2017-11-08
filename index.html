@@ -1,26 +1,83 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Hangman</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Javascript file for this game -->
         <script src="assets/javascript/game.js"></script>
+        <!-- Reset CSS File -->
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Hangman</title>
     </head>
-    <body onload="gameSetup()" onkeypress="gameFunction(event)">
+    <body class="body-container" onload="gameSetup()" onkeypress="gameFunction(event)">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <p id="output"></p>
-        <p id="remaining"></p>
-        <p id="guesses"></p>        
-        <p id="wins"></p>
-        <p id="losses"></p>
+        <div class="container">
+            <!-- Page Title -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hangman-container">
+                        <h1 class="hangman-title">Hangman: Musical Theatre</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- Word being guessed -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hangman-container">
+                        <p id="output"></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Remaining Guesses -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hangman-container" id="remaining">
 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Guessed Letters -->
+                <div class="col-md-6">
+                    <div class="hangman-container" id="guesses">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Wins -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hangman-container" id="wins">
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Losses -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hangman-container" id="losses">
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        
+            <p id="output"></p>
+            <p id="remaining"></p>
+            <p id="guesses"></p>        
+            <p id="wins"></p>
+            <p id="losses"></p>
+
+        </div>
     </body>
 </html>
