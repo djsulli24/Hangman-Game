@@ -226,10 +226,10 @@ function gameFunction (enteredLetter) {
 
 function displayValues() {
     document.getElementById("output").innerHTML = blanksArray.join("");
-    document.getElementById("remaining").innerHTML = "Remaining Guesses: " + remainingGuesses; 
-    document.getElementById("guesses").innerHTML = "Guessed Letters: " + guessedLetters.join(", ");     
-    document.getElementById("wins").innerHTML = "Wins: " + wins;
-    document.getElementById("losses").innerHTML = "Losses: " + losses;  
+    document.getElementById("remaining").innerHTML = remainingGuesses; 
+    document.getElementById("guesses").innerHTML = arrayToUpperCase(guessedLetters).join(" ");     
+    document.getElementById("wins").innerHTML = wins;
+    document.getElementById("losses").innerHTML = losses;  
 }
 
 // This function checks two things: whether remaining guesses has reached 0, or whether the user guessed all the correct letters
@@ -253,5 +253,14 @@ function gameSetup() {
 
     resetGame();
     displayValues();
+
+}
+
+function arrayToUpperCase(array) {
+    
+    var newArray = array.map(function(x) {
+        return x.toUpperCase();
+    });
+    return newArray;
 
 }

@@ -40,44 +40,41 @@
             <!-- Remaining Guesses -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="hangman-container" id="remaining">
-
+                    <div class="hangman-container" id="remaining-container">
+                        <div><h2>Remaining Guesses</h2></div>
+                        <div id="remaining"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <!-- Guessed Letters -->
                 <div class="col-md-6">
-                    <div class="hangman-container" id="guesses">
-
+                    <div class="hangman-container" id="guesses-container">
+                        <div><h2>Guessed Letters</h2></div>
+                        <div id="guesses"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <!-- Wins -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="hangman-container" id="wins">
-                                    
+                        <div class="col-xs-6">
+                            <div class="hangman-container" id="wins-container">
+                                <div><h2>Wins</h2></div>
+                                <div id="wins"></div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <!-- Losses -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="hangman-container" id="losses">
-                                    
+                    <!-- <div class="row"> -->
+                        <div class="col-xs-6">
+                            <div class="hangman-container" id="losses-container">
+                                <div><h2>Losses</h2></div>
+                                <div id="losses"></div> 
                             </div>
                         </div>
                     </div>
                 </div>    
             </div>
-        
-            <p id="output"></p>
-            <p id="remaining"></p>
-            <p id="guesses"></p>        
-            <p id="wins"></p>
-            <p id="losses"></p>
-
         </div>
     </body>
 </html>
